@@ -12,3 +12,15 @@ stages:
     - src/features/build_features.py
     outs:
     - data/processed
+
+
+  model_training:
+    cmd: python src/models/train_model.py
+    deps:
+    - data/processed
+    - src/models/train_model.py
+    params:
+    - rfr.max_depth
+    - rfr.n_estimators
+    outs:
+    - results/model.pkl
